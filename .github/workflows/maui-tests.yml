@@ -11,7 +11,7 @@ on:
  
 jobs:
   test:
-    runs-on: macos-latest  # Of windows-latest/macOS-latest als specifiek platform nodig is
+    runs-on: ubuntu-latest  # Of windows-latest/macOS-latest als specifiek platform nodig is
     steps:
       - name: Haal de repository op
         uses: actions/checkout@v4
@@ -19,10 +19,10 @@ jobs:
       - name: Installeer .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0'  # Gebruik de juiste versie voor MAUI
+          dotnet-version: '8.0.x'  # Gebruik de juiste versie voor MAUI
  
       - name: Installeer MAUI workloads
-        run: dotnet workload install maui
+        run: dotnet workload install maui-android
  
       - name: Herstel afhankelijkheden
         run: dotnet restore
