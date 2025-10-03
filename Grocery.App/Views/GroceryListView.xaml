@@ -1,0 +1,5 @@
+<ContentPage.ToolbarItems>
+    <ToolbarItem 
+        Text="{Binding Client.Name}" 
+        Command="{Binding ShowBoughtProductsCommand}" />
+</ContentPage.ToolbarItems>
