@@ -2,7 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using Grocery.Core.Interfaces.Services;
 using Grocery.Core.Models;
+using Grocery.App.Views;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Grocery.App.ViewModels
 {
@@ -34,6 +36,22 @@ namespace Grocery.App.ViewModels
         {
             base.OnDisappearing();
             GroceryLists.Clear();
+        }
+
+        // Property voor de huidige client
+        public Client Client { get; set; }
+
+        // Command voor de toolbar
+        [RelayCommand]
+        public async Task ShowBoughtProducts()
+        {
+            // Controleer of de client admin is
+            if (Client != null && Client.Role == Role.Admin)
+            {
+                // Navigeer naar BoughtProductsView
+                await Shell.Current.GoToAsync(nameof(BoughtProductsView));
+            }
+            // Anders doe je niets
         }
     }
 }
